@@ -1,0 +1,11 @@
+# Init all database data.
+# Update it if new init data scripts are added.
+function project_init {
+    export $(grep -v '^#' /var/www/html/.env.local | xargs) # Use environment variables for email and password
+    composer install
+    php /var/www/html/bin/console doctrine:migrations:migrate --no-interaction
+    php /var/www/html/bin/console init:all
+    php /var/www/html/bin/console user:create-admin ${ADMIN_USER_EMAIL} --dummy-person --force-password=${ADMIN_USER_PASSWORD} --force-login-id=${ADMIN_USER_LOGINID} --no-interaction
+}
+
+source /var/www/html/config/docker/php/bash_aliases
