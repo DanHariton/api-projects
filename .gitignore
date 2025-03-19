@@ -10,7 +10,10 @@
 
 ###> phpunit/phpunit ###
 /phpunit.xml
+/phpunit.dist.xml
+/phpunit.dist.xml.bak
 .phpunit.result.cache
+/.phpunit.cache
 ###< phpunit/phpunit ###
 
 #database

@@ -17,8 +17,13 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/Entity/'
+            - '../src/Model/Entity/'
             - '../src/Kernel.php'
+
+    App\DataFixtures\AppFixtures:
+        arguments:
+            $smallCount: '%env(int:FIXTURES_SMALL_COUNT)%'
+            $largeCount: '%env(int:FIXTURES_LARGE_COUNT)%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
